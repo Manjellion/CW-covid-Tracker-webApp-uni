@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Manjellion/CW-covid-Tracker-webApp-uni/issues"
   },
-  "homepage": "https://github.com/Manjellion/CW-covid-Tracker-webApp-uni#readme"
+  "homepage": "https://github.com/Manjellion/CW-covid-Tracker-webApp-uni#readme",
+  "dependencies": {
+    "antd": "^4.16.13"
+  }
 }
