@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+}
+
+.chartImg {
+    max-height: 400px;
+    max-width: 600px;
+}

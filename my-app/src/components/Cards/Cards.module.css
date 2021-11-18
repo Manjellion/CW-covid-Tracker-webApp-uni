@@ -1,0 +1,19 @@
+.container {
+    margin: 50px 0;
+}
+
+.card {
+    margin: 0 2% !important; /* Material UI requires this command for it to run on aligned items*/
+}
+
+.infected {
+    border-bottom: 10px solid rgba(86, 86, 177, 0.5);
+}
+
+.recovered {
+    border-bottom: 10px solid rgba(73, 73, 126, 0.5);
+}
+
+.deaths {
+    border-bottom: 10px solid rgba(42, 42, 58, 0.5);
+}

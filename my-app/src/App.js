@@ -1,12 +1,23 @@
-import './App.css';
-import covidDeathCase from './components/covidDeathCase';
+import { Cards, Chart, CountryPicker } from './components';
+import Css from './App.module.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <covidDeathCase />
-    </div>
-  );
+import logo from './images/covid-19.svg'
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className={Css.container}>
+        <div className={Css.logo}>
+          <h1>Covid Tracker</h1> 
+          <img src={logo}></img>
+        </div>
+        <Cards />
+        <CountryPicker />
+        <Chart />
+      </div>
+    );
+  }
 }
 
 export default App;
