@@ -8,3 +8,10 @@
     max-height: 400px;
     max-width: 600px;
 }
+
+@media (max-width: 990px){
+    .chartImg {
+        max-height: 300px;
+        max-width: 500px;
+    }
+}
