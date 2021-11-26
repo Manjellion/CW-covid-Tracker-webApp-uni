@@ -1,34 +1,75 @@
 import React from 'react';
-
+import axios from 'axios'
 import Css from './Cards.module.css';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 
-export const Cards = (props) => {
-    return (
+class Cards extends React.Component {
+
+    state = {
+        title: '',
+        body: '',
+        posts: []
+        }
+        
+        componentDidMount = () => {
+            this.getCovidData();
+        }
+        
+        getCovidData = () => {
+            axios.get('http://localhost:8080/all-covid-Data')
+            .then((response) => {
+                const data = response.data;
+                this.setState({ posts: data });
+                console.log("Data has been recieved");
+                console.log(data);
+            }) 
+            .catch(() => {
+                console.log("Error retrieving data");
+            })
+        }
+        
+        displayDeaths = (posts) => {
+        
+            if (!posts.length) return null;
+        
+            return posts.map((post, index) => (
+            <div key={index}>
+                <div>{post.TotalDeaths}</div>
+            </div>
+            ));
+        }
+
+        displayCases = (posts) => {
+        
+            if (!posts.length) return null;
+        
+            return posts.map((post, index) => (
+            <div key={index}>
+                <div>{post.TotalCases}</div>
+            </div>
+            ));
+        }
+
+
+
+    render() {
+        return (
         <div className={Css.container}>
             <Grid container spacing={3} justify="center">
-                <Grid item component={Card} xs={12} md={3} className={cx(Css.card, Css.infected)}>
+                <Grid item component={Card} xs={12} md={6} className={cx(Css.card, Css.infected)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Infected</Typography>
-                        <Typography varaint="h5">REAL DATA</Typography>
+                        <Typography varaint="h5">{this.displayCases(this.state.posts)}</Typography>
                         <Typography color="textSecondary" gutterBottom>REAL DATE</Typography>
                         <Typography varaint="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(Css.card, Css.recovered)}>
-                    <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Recovered</Typography>
-                        <Typography varaint="h5">REAL DATA</Typography>
-                        <Typography color="textSecondary" gutterBottom>REAL DATE</Typography>
-                        <Typography varaint="body2">Number of recovered people of COVID-19</Typography>
-                    </CardContent>
-                </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(Css.card, Css.deaths)}>
+                <Grid item component={Card} xs={12} md={6} className={cx(Css.card, Css.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
-                        <Typography varaint="h5">REAL DATA</Typography>
+                        <Typography varaint="h5">{this.displayDeaths(this.state.posts)}</Typography>
                         <Typography color="textSecondary" gutterBottom>REAL DATE</Typography>
                         <Typography varaint="body2">Number of deaths of COVID-19</Typography>
                     </CardContent>
@@ -36,6 +77,7 @@ export const Cards = (props) => {
             </Grid>
         </div>
     )
+    }
 }
 
 export default Cards;
