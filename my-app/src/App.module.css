@@ -4,6 +4,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+  color: blue;
+}
+
 body {
   background-color: rgb(250, 250, 250);
   overflow-x: hidden;
@@ -12,6 +16,10 @@ body {
 .container .logo {
   display: flex;
   align-items: center;
+}
+
+header {
+  display: flex;
 }
 
 img {

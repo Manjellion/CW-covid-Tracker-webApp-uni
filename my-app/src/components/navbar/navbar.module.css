@@ -1,20 +1,19 @@
-.container {
-    background-color: navy;
-    width: 100%;
-}
-
 ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 li {
-    margin: auto;
+    margin-left: 2rem;
     list-style: none;
 }
 
 a {
-    color: white;
     text-decoration: none;
+    color: grey;
+    font-weight: 900;
+}
+
+a:hover {
+    color: blue;
+    transition: .5s;
 }

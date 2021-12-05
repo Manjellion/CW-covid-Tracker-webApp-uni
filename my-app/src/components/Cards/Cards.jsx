@@ -8,8 +8,6 @@ import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 class Cards extends React.Component {
 
     state = {
-        title: '',
-        body: '',
         posts: []
         }
         
@@ -62,7 +60,6 @@ class Cards extends React.Component {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Infected</Typography>
                         <Typography varaint="h5">{this.displayCases(this.state.posts)}</Typography>
-                        <Typography color="textSecondary" gutterBottom>REAL DATE</Typography>
                         <Typography varaint="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
@@ -70,7 +67,6 @@ class Cards extends React.Component {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                         <Typography varaint="h5">{this.displayDeaths(this.state.posts)}</Typography>
-                        <Typography color="textSecondary" gutterBottom>REAL DATE</Typography>
                         <Typography varaint="body2">Number of deaths of COVID-19</Typography>
                     </CardContent>
                 </Grid>
