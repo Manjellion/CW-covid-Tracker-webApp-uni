@@ -5,7 +5,7 @@
 }
 
 .card {
-    margin: 0 2% !important; /* Material UI requires this command for it to run on aligned items*/
+    margin: 2% 2% !important; /* Material UI requires this command for it to run on aligned items*/
 }
 
 .infected {

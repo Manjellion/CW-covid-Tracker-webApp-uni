@@ -1,0 +1,20 @@
+.container {
+    background-color: navy;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    margin: auto;
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
