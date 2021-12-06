@@ -8,6 +8,10 @@
     margin: 2% 2% !important; /* Material UI requires this command for it to run on aligned items*/
 }
 
+.Grid {
+    justify-content: center;
+}
+
 .infected {
     border-bottom: 10px solid rgba(86, 86, 177, 0.5);
 }

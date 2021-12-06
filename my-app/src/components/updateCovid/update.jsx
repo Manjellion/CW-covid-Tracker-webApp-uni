@@ -36,14 +36,17 @@ function update() {
     }
     return (
         <div className={Css.container}>
-            <h2>Input new Covid Data</h2>
-            <form>
-                <input onChange={handleChange} name="date" value={input.date} autoComplete="off" placeholder="date"></input>        
-                <input onChange={handleChange} name="state" value={input.state} autoComplete="off" placeholder="state"></input>        
-                <input onChange={handleChange} name="cases" value={input.cases} autoComplete="off" placeholder="cases"></input>        
-                <input onChange={handleChange} name="deaths" value={input.deaths} autoComplete="off" placeholder="deaths"></input>        
-                <button onClick={handleClick}>Add Data</button>
-            </form>
+            <div className={Css.containerForm}>
+                <h2>Input new Covid Data</h2>
+                    <form post="/all-covid-Data" method="POST"> 
+                        <input onChange={handleChange} name="date" value={input.date} autoComplete="off" placeholder="date"></input>        
+                        <input onChange={handleChange} name="state" value={input.state} autoComplete="off" placeholder="state"></input>        
+                        <input onChange={handleChange} name="cases" value={input.cases} autoComplete="off" placeholder="cases"></input>        
+                        <input onChange={handleChange} name="deaths" value={input.deaths} autoComplete="off" placeholder="deaths"></input>        
+                        <button onClick={handleClick}>Add Covid Data</button>
+                    </form>
+            </div>
+            
         </div>
     )
 }

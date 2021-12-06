@@ -54,15 +54,15 @@ class Cards extends React.Component {
     render() {
         return (
         <div className={Css.container}>
-            <Grid container spacing={3}>
-                <Grid item component={Card} xs={12} md={6} className={cx(Css.card, Css.infected)}>
+            <Grid container spacing={3} className={cx(Css.Grid)}>
+                <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.infected)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Infected</Typography>
                         <Typography varaint="h5">{this.displayCases(this.state.posts)}</Typography>
                         <Typography varaint="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={6} className={cx(Css.card, Css.deaths)}>
+                <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                         <Typography varaint="h5">{this.displayDeaths(this.state.posts)}</Typography>
