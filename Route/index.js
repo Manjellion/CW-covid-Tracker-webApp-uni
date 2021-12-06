@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
 
 const mongo_URL = 'mongodb://localhost:27017/CovidData';
 mongoose.connect(mongo_URL,  {useUnifiedTopology: true, useNewUrlParser: true});
@@ -44,6 +46,25 @@ const covid_Doc = mongoose.model('modelname', Covid_Data_Schema, 'CovidData');
 //        console.log('Saving single document', doc);
 //    }
 //})
+
+router.route('/all-covid-Data').post((req, res) => {
+    const date = req.body.date;
+    const state = req.body.state;
+    const cases = req.body.cases;
+    const deaths = req.body.deaths;
+    const newData = new covid_Doc({
+        date,
+        state,
+        cases,
+        deaths
+    });
+
+    newData.save(function (err, doc) {
+        if (err) {
+            console.log('Saving single documents', doc);
+        }
+    });
+})
 
 covid_Doc.find({})
         .exec()

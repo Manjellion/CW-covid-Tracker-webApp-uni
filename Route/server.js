@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const covid_Doc = require('./index')
 
 const app = express();
-const router = express.Router();
 const PORT = 8080;
 
 // Data Parsing
@@ -23,21 +22,6 @@ app.get('/all-covid-Data', (req, res) => {
             console.log(err);
         })
 });
-
-router.route('/all-covid-Data').post((req, res) => {
-    const date = req.body.date;
-    const state = req.body.state;
-    const cases = req.body.cases;
-    const deaths = req.body.deaths;
-    const newData = new covid_Doc({
-        date,
-        state,
-        cases,
-        deaths
-    });
-
-    newData.save();
-})
 
 
 app.listen(PORT, function() {

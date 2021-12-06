@@ -12,7 +12,7 @@ class App extends React.Component {
         <div className={Css.container}>
           <div className={Css.logo}>
             <h1>Covid Tracker</h1> 
-            <img src={logo}></img>
+            <img src={logo} alt = "Logo"></img>
             <nav>
               <NavBar />
             </nav>
