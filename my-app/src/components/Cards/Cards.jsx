@@ -7,11 +7,13 @@ import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 class Cards extends React.Component {
 
     state = {
-        posts: []
+        posts: [],
+        reports: ""
         }
         
         componentDidMount = () => {
             this.getCovidData();
+            this.getCovidReport();
         }
         
         getCovidData = () => {
@@ -27,13 +29,36 @@ class Cards extends React.Component {
             })
         }
         
+        getCovidReport = () => {
+            axios.get('http://localhost:8080/total-reports')
+            .then((response) => {
+                const data = response.data;
+                this.setState({ reports: data });
+                console.log(`Total Reports made: ${data}`);
+            })
+            .catch(() => {
+                console.log('Error retrieving report data');
+            })
+        }
+
+        displayReport = (reports) => {
+
+            if (!reports.length) return null;
+
+            return reports.map((report, index) => (
+                <div key={index}>
+                    <div>{report}</div>
+                </div>
+            ))
+        }
+
         displayDeaths = (posts) => {
         
             if (!posts.length) return null;
         
             return posts.map((post, index) => (
             <div key={index}>
-                <div>{post.TotalDeaths}</div>
+                <div>{post.Totaldeaths}</div>
             </div>
             ));
         }
@@ -44,9 +69,20 @@ class Cards extends React.Component {
         
             return posts.map((post, index) => (
             <div key={index}>
-                <div>{post.TotalCases}</div>
+                <div>{post.Totalcases}</div>
             </div>
             ));
+        }
+
+        displayAll = (posts) => {
+
+            if (!posts.length) return null;
+
+            return posts.map((post, index) => (
+                <div key={index}>
+                    <div className={cx(Css.list)}>{post.date} | {post.state} | {post.cases} | {post.deaths}</div>
+                </div>
+            ))
         }
 
 
@@ -67,6 +103,22 @@ class Cards extends React.Component {
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                         <Typography varaint="h5">{this.displayDeaths(this.state.posts)}</Typography>
                         <Typography varaint="body2">Number of active deaths of COVID-19</Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>Total Reports</Typography>
+                        <Typography varaint="h5">{this.displayReport(this.state.reports)}</Typography>
+                        <Typography varaint="body2">Number of reports made for COVID-19</Typography>
+                    </CardContent>
+                </Grid>
+            </Grid>
+            <Grid container spacing={3} className={cx(Css.Grid)}>
+                <Grid item component={Card} xs={12} md={8}>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>List: Date / State / Cases / Deaths</Typography>
+                        <Typography varaint="h5">{this.displayAll(this.state.posts)}</Typography>
+                        <Typography varaint="body2">All Data</Typography>
                     </CardContent>
                 </Grid>
             </Grid>

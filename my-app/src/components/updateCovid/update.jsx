@@ -33,10 +33,7 @@ function update() {
         }
         axios.post(url + "add-data", covidData)
             .then(res => 
-                console.log(res.data))
-            .catch(function (err) {
-                console.log(err);
-            })
+                console.log(res.data));
     }
 
     return (
