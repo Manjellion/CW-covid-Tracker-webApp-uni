@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+import Delete from './DeleteData'
 import Css from './Cards.module.css';
 import cx from 'classnames';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
@@ -80,12 +81,10 @@ class Cards extends React.Component {
 
             return posts.map((post, index) => (
                 <div key={index}>
-                    <div className={cx(Css.list)}>{post.date} | {post.state} | {post.cases} | {post.deaths}</div>
+                    <div className={cx(Css.list)}>| {post.date} | {post.state} | {post.cases} | {post.deaths} |</div>
                 </div>
             ))
         }
-
-
 
     render() {
         return (
@@ -118,7 +117,7 @@ class Cards extends React.Component {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>List: Date / State / Cases / Deaths</Typography>
                         <Typography varaint="h5">{this.displayAll(this.state.posts)}</Typography>
-                        <Typography varaint="body2">All Data</Typography>
+                        <Typography varaint="body2">All Data <Delete/></Typography>
                     </CardContent>
                 </Grid>
             </Grid>

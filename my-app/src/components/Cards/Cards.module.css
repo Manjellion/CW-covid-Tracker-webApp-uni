@@ -29,7 +29,6 @@
     text-align: center;
 }
 
-
 @media (max-width: 990px){
     .card {
         margin: 1rem 2rem !important;
