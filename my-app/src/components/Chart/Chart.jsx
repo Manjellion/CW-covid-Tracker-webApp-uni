@@ -1,19 +1,23 @@
 import React from 'react';
+import axios from 'axios';
 import Css from './Chart.module.css';
 import { Bar } from 'react-chartjs-2';
 class Charts extends React.Component {
-    
+
+    state = {
+        reports: ""
+    }
+
     constructor(props) {
         super(props);
         this.state = {
             chartData: {
-                labels: ['Total Cases', 'Total Deaths'],
+                labels: ['Total Reports'],
                 datasets: [
                     {
-                        label: ['Population'],
+                        label: ['Total Reports'],
                         data: [
-                            72088,
-                            3667
+                            719
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6',
@@ -22,6 +26,27 @@ class Charts extends React.Component {
                 ]
             }
         }
+    }   
+
+    componentDidMount = () => {
+        this.getCovidReport();
+    }
+
+    getCovidReport = () => {
+        axios.get('http://localhost:8080/total-reports')
+        .then((response) => {
+            const data = response.data;
+            const Total = data.toString();
+            this.setState({ reports: Total });
+            console.log(`Total Reports made: ${Total}`);
+        })
+        .catch(() => {
+            console.log('Error retrieving report data');
+        })
+    }
+
+    display = () => {
+        console.log(this.state.reports);
     }
 
     render() {

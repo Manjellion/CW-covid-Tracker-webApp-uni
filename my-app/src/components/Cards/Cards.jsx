@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios'
-import Delete from './DeleteData'
 import Css from './Cards.module.css';
 import cx from 'classnames';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { AiOutlineCloseSquare } from 'react-icons/ai';
 
 class Cards extends React.Component {
 
@@ -77,11 +77,28 @@ class Cards extends React.Component {
 
         displayAll = (posts) => {
 
+            function onDelete(id) {
+                axios.delete(`http://localhost:8080/delete/${id}`)
+                .then((response) => {
+                    alert("Deleted successfully");
+                    window.location.reload(false);
+                })
+            }
+
             if (!posts.length) return null;
 
             return posts.map((post, index) => (
                 <div key={index}>
-                    <div className={cx(Css.list)}>| {post.date} | {post.state} | {post.cases} | {post.deaths} |</div>
+                    <div className={cx(Css.list)}>| {post.date} | {post.state} | {post.cases} | {post.deaths} | 
+                    <button
+                    style={{ border: '10px' }}
+                    onClick={""}
+                    >Edit</button> <AiOutlineCloseSquare 
+                    style={{ cursor: "pointer", fontSize: '1.5rem', marginTop: '15px', position: 'absolute' }}
+                    onClick={() => {
+                        onDelete(post._id)
+                    }}
+                    /></div>
                 </div>
             ))
         }
@@ -107,7 +124,7 @@ class Cards extends React.Component {
                 <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Total Reports</Typography>
-                        <Typography varaint="h5">{this.displayReport(this.state.reports)}</Typography>
+                        <Typography varaint="h5">{this.state.reports}</Typography>
                         <Typography varaint="body2">Number of reports made for COVID-19</Typography>
                     </CardContent>
                 </Grid>
@@ -117,7 +134,7 @@ class Cards extends React.Component {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>List: Date / State / Cases / Deaths</Typography>
                         <Typography varaint="h5">{this.displayAll(this.state.posts)}</Typography>
-                        <Typography varaint="body2">All Data <Delete/></Typography>
+                        <Typography varaint="body2">All Data</Typography>
                     </CardContent>
                 </Grid>
             </Grid>

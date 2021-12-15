@@ -24,7 +24,6 @@ function update() {
 
     const OnSubmmit = (e) => {
 
-        e.preventDeafult();
         const covidData = {
             date: state.date,
             state: state.state,
@@ -36,6 +35,10 @@ function update() {
                 console.log(res.data));
     }
 
+    function refreshWindow() {
+        window.location.reload(false);
+    }
+
     return (
         <div className={Css.container}>
             <div className={Css.containerForm}>
@@ -45,7 +48,7 @@ function update() {
                         <input onChange={handleChange} name="state" value={state.state} autoComplete="off" placeholder="state"></input>        
                         <input onChange={handleChange} name="cases" value={state.cases} autoComplete="off" placeholder="cases"></input>        
                         <input onChange={handleChange} name="deaths" value={state.deaths} autoComplete="off" placeholder="deaths"></input>        
-                        <input type="submit" value="Add this Data"></input>
+                        <input type="submit" value="Add this Data" onClick={refreshWindow}></input>
                     </form>
             </div>
             
