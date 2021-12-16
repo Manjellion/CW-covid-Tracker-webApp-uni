@@ -28,27 +28,6 @@ class Charts extends React.Component {
         }
     }   
 
-    componentDidMount = () => {
-        this.getCovidReport();
-    }
-
-    getCovidReport = () => {
-        axios.get('http://localhost:8080/total-reports')
-        .then((response) => {
-            const data = response.data;
-            const Total = data.toString();
-            this.setState({ reports: Total });
-            console.log(`Total Reports made: ${Total}`);
-        })
-        .catch(() => {
-            console.log('Error retrieving report data');
-        })
-    }
-
-    display = () => {
-        console.log(this.state.reports);
-    }
-
     render() {
         return (
             <div className={Css.container}>
