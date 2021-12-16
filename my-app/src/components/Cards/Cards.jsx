@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import Css from './Cards.module.css';
 import cx from 'classnames';
+import Edit from '../updateCovid/Edit';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 
@@ -90,10 +91,11 @@ class Cards extends React.Component {
             return posts.map((post, index) => (
                 <div key={index}>
                     <div className={cx(Css.list)}>| {post.date} | {post.state} | {post.cases} | {post.deaths} | 
-                    <button
-                    style={{ border: '10px' }}
-                    onClick={""}
-                    >Edit</button> <AiOutlineCloseSquare 
+                                <button
+                                    style={{ border: '10px' }}
+                                    >Edit
+                                </button> 
+                    <AiOutlineCloseSquare 
                     style={{ cursor: "pointer", fontSize: '1.5rem', marginTop: '15px', position: 'absolute' }}
                     onClick={() => {
                         onDelete(post._id)
