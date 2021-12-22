@@ -2,10 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import Css from './Cards.module.css';
 import cx from 'classnames';
-import Edit from '../updateCovid/Edit';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
-import { AiOutlineCloseSquare } from 'react-icons/ai';
-
+import { AiOutlineCloseSquare, AiFillEdit } from 'react-icons/ai';
+import Edit from './EditForm'
 class Cards extends React.Component {
 
     state = {
@@ -111,8 +110,8 @@ class Cards extends React.Component {
                 <div key={index}>
                     <div className={cx(Css.list)}>| {post.date} | {post.state} | {post.cases} | {post.deaths} | 
                                 <button
-                                    style={{ border: '10px' }}
-                                    >Edit
+                                    style={{ border: '10px', cursor: 'pointer' }}
+                                    ><a href="./EditForm.jsx"><AiFillEdit /></a>
                                 </button> 
                     <AiOutlineCloseSquare 
                     style={{ cursor: "pointer", fontSize: '1.5rem', marginTop: '15px', position: 'absolute' }}
@@ -152,8 +151,9 @@ class Cards extends React.Component {
                 <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Input number to see states with more cases </Typography>
-                        <input type="text" value="UserInput"></input>
+                        <input type="text" placeholder="UserInput"></input>
                         <input type="submit" onClick={this.displayUserForStates}></input>
+                        <Typography varaint="h5">{this.displayStates(this.state.posts)}</Typography>
                     </CardContent>
                 </Grid>
             </Grid>
@@ -162,7 +162,7 @@ class Cards extends React.Component {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>List: Date / State / Cases / Deaths</Typography>
                         <Typography varaint="h5">{this.displayAll(this.state.posts)}</Typography>
-                        <Typography varaint="body2">All Data</Typography>
+                        <Typography varaint="body2">First 20 Data</Typography>
                     </CardContent>
                 </Grid>
             </Grid>

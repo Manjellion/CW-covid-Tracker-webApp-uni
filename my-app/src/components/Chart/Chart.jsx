@@ -17,7 +17,7 @@ class Charts extends React.Component {
                     {
                         label: ['Total Reports'],
                         data: [
-                            719
+                            721
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6',

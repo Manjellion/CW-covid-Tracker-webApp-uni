@@ -29,6 +29,36 @@
     text-align: center;
 }
 
+h2 {
+    color: black;
+    font-weight: 900;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.containerForm {
+    padding: 5rem;
+    background-color: lightgrey ;
+}
+
+button {
+    margin: 1rem;
+}
+
 @media (max-width: 990px){
     .card {
         margin: 1rem 2rem !important;

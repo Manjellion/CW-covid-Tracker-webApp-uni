@@ -1,4 +1,4 @@
-import { Cards, Chart, Update, NavBar, Edit } from './components';
+import { Cards, Chart, Update, NavBar, EditForm } from './components';
 import Css from './App.module.css';
 import React from 'react';
 import logo from './images/covid-19.svg';
@@ -21,7 +21,7 @@ class App extends React.Component {
             <Routes>
               <Route exact path="/" element={<Cards />}></Route>
               <Route exact path="/graph" element={<Chart />}></Route>
-              <Route exact path="/edit" element={<Edit />}></Route>
+              <Route exact path="/edit" element={<EditForm />}></Route>
               <Route exact path="/form" element={<Update />}></Route>
             </Routes>
           </div>
