@@ -76,6 +76,25 @@ class Cards extends React.Component {
             ));
         }
 
+        displayStates = (posts) => {
+
+            if (!posts.length) return null;
+
+            return posts.map((post, index) => (
+                <div key={index}>
+                    <div>{post.state}</div>
+                </div>
+            )
+        )}
+
+        displayUserForStates = (state) => {
+                axios.get(`http://localhost:8080/get-data/${state}`)
+                .then((response) => {
+                    alert(`States with more then ${response.body.UserInput} cases`);
+                    this.displayStates();
+                })
+        }
+
         displayAll = (posts) => {
 
             function onDelete(id) {
@@ -128,6 +147,13 @@ class Cards extends React.Component {
                         <Typography color="textSecondary" gutterBottom>Total Reports</Typography>
                         <Typography varaint="h5">{this.state.reports}</Typography>
                         <Typography varaint="body2">Number of reports made for COVID-19</Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>Input number to see states with more cases </Typography>
+                        <input type="text" value="UserInput"></input>
+                        <input type="submit" onClick={this.displayUserForStates}></input>
                     </CardContent>
                 </Grid>
             </Grid>
