@@ -30,6 +30,7 @@ class Cards extends React.Component {
             })
         }
         
+        
         getCovidReport = () => {
             axios.get('http://localhost:8080/total-reports')
             .then((response) => {
