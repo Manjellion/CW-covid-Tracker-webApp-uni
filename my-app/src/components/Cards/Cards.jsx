@@ -9,12 +9,14 @@ class Cards extends React.Component {
 
     state = {
         posts: [],
+        all: [],
         reports: ""
         }
         
         componentDidMount = () => {
             this.getCovidData();
             this.getCovidReport();
+            this.getAllCovidData();
         }
         
         getCovidData = () => {
@@ -22,6 +24,19 @@ class Cards extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ posts: data });
+                console.log("Data has been recieved");
+                console.log(data);
+            }) 
+            .catch(() => {
+                console.log("Error retrieving data");
+            })
+        }
+
+        getAllCovidData = () => {
+            axios.get('http://localhost:8080//all-data')
+            .then((response) => {
+                const data = response.data;
+                this.setState({ all: data });
                 console.log("Data has been recieved");
                 console.log(data);
             }) 
@@ -131,14 +146,14 @@ class Cards extends React.Component {
                 <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.infected)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Infected</Typography>
-                        <Typography varaint="h5">{this.displayCases(this.state.posts)}</Typography>
+                        <Typography varaint="h5">{this.displayCases(this.state.all)}</Typography>
                         <Typography varaint="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} xs={12} md={5} className={cx(Css.card, Css.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
-                        <Typography varaint="h5">{this.displayDeaths(this.state.posts)}</Typography>
+                        <Typography varaint="h5">{this.displayDeaths(this.state.all)}</Typography>
                         <Typography varaint="body2">Number of active deaths of COVID-19</Typography>
                     </CardContent>
                 </Grid>
