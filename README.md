@@ -24,7 +24,7 @@ To Start app opening directory in terminal and then <code>cd my-app</code>
 
 ## Sample Navigational Structure
 
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oreilly.com%2Flibrary%2Fview%2Fdesigning-web-navigation%2F9780596528102%2Fch04.html&psig=AOvVaw2glrOaa5PteinwlZSY10QZ&ust=1641240864667000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLChlejwk_UCFQAAAAAdAAAAABAU
+![image](https://user-images.githubusercontent.com/77361838/147888350-ddd766ab-9e95-4a6f-af48-790205ace1a0.png)
 
 ## App design
 
