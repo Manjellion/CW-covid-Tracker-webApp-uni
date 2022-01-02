@@ -15,6 +15,7 @@ To Start app opening directory in terminal and then <code>cd my-app</code>
 - `npm start`
 
 ## Running Back-end
+- `install` the backend file https://github.com/Manjellion/cw-restAPI
 - Run local Server in terminal using node server to start server
 
 ## Running Database
