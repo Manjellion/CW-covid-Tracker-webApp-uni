@@ -22,6 +22,11 @@ To Start app opening directory in terminal and then <code>cd my-app</code>
 - set to localhost 27079
 - Create database `CovidData` and collection `CovidData`.
 
+## DOM and virtual DOM
+
+![image](https://user-images.githubusercontent.com/77361838/147888363-2b08c899-7b09-419d-8a37-c6b0e4bb08c6.png)
+
+
 ## Sample Navigational Structure
 
 ![image](https://user-images.githubusercontent.com/77361838/147888350-ddd766ab-9e95-4a6f-af48-790205ace1a0.png)
